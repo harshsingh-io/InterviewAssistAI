@@ -53,4 +53,34 @@ document.addEventListener('DOMContentLoaded', function() {
             aiResponseDiv.textContent = request.response;
         }
     });
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Sync theme across all extension pages
+        chrome.runtime.sendMessage({
+            action: 'syncTheme',
+            theme: newTheme
+        });
+    });
+    
+    // Listen for theme sync from other pages
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        if (request.action === 'syncTheme') {
+            document.documentElement.setAttribute('data-theme', request.theme);
+            localStorage.setItem('theme', request.theme);
+        }
+    });
 });

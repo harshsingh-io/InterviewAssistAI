@@ -25,6 +25,7 @@ h3 {
     margin-bottom: 20px;
     color: #2c3e50;
     text-align: center;
+    margin-top: 40px;
 }
 
 input[type="password"] {
@@ -159,4 +160,139 @@ textarea {
 
 #saveContext:hover {
     background-color: #218838;
+}
+
+/* Dark theme variables */
+:root {
+    --bg-primary: #f0f4f8;
+    --bg-secondary: white;
+    --text-primary: #333;
+    --text-secondary: #2c3e50;
+    --border-color: #ddd;
+    --transcript-bg: #ecf0f1;
+    --ai-response-bg: #e8f6fd;
+    --collapse-bg: #f0f4f8;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --border-color: #404040;
+    --transcript-bg: #363636;
+    --ai-response-bg: #2c3e50;
+    --collapse-bg: #363636;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+#app {
+    background-color: var(--bg-secondary);
+}
+
+h3 {
+    color: var(--text-secondary);
+}
+
+input[type="password"], textarea {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+#transcript {
+    background-color: var(--transcript-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+#aiResponse {
+    background-color: var(--ai-response-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.collapsible .collapse-toggle {
+    background-color: var(--collapse-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.content-box {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Theme toggle styles */
+.theme-toggle-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#themeToggle {
+    opacity: 0;
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.theme-switch {
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 30px;
+    background: #83d8ff;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .theme-switch {
+    background: #374151;
+}
+
+.theme-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .theme-switch::after {
+    transform: translateX(30px);
+    background: #f9d71c;
+}
+
+.theme-switch::before {
+    content: '☀️';
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    font-size: 14px;
+}
+
+[data-theme="dark"] .theme-switch::before {
+    content: '🌙';
+    left: auto;
+    right: 8px;
+}
+
+.theme-switch:hover::after {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
