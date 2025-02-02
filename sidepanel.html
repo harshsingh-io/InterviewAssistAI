@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Interview Assistant</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h3>AI Interview Assistant</h3>
+
+      <!-- API Key Section -->
+      <div class="section">
+        <input
+          type="password"
+          id="apiKeyInput"
+          placeholder="Enter your OpenAI API Key here"
+        />
+        <button id="saveApiKey">Save API Key</button>
+      </div>
+
+      <!-- Context Section -->
+      <div class="section collapsible">
+        <button class="collapse-toggle">Interview Context ▼</button>
+        <div class="collapse-content">
+          <textarea
+            id="jobDescription"
+            placeholder="Paste job description here..."
+          ></textarea>
+          <textarea
+            id="resume"
+            placeholder="Paste your resume here..."
+          ></textarea>
+          <button id="saveContext">Save Context</button>
+        </div>
+      </div>
+
+      <!-- Recording Section -->
+      <div class="section">
+        <button id="toggleListening">Start Listening</button>
+        <div id="transcript" class="content-box"></div>
+        <div id="aiResponse" class="content-box"></div>
+      </div>
+    </div>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
